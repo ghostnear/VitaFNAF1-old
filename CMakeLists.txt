@@ -17,6 +17,9 @@ function (PROJECT_FILES)
   # Add all the files needed to compile here
   add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/core/delta_timer.cpp
+    src/core/platform_specific.cpp
+    src/rendering/sdl_window.cpp
   )
 endfunction()
 

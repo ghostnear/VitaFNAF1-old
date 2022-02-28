@@ -25,6 +25,7 @@ namespace Engine::Game::Scenes
     {
         // Create menu scene in memory and remove this one
         SceneMenu* newScene = new SceneMenu();
+        newScene -> changeManager(man);
         parent -> push(newScene, ren);
         parent -> pop();
     }

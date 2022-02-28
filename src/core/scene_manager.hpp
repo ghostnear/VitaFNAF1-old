@@ -11,11 +11,17 @@ namespace Engine::Game
         std::deque<Scene*> sceneQueue;
 
     public:
+        // Clear the scene queue
+        void clear();
+
         // Push the scene to the back of the queue
         void push(Scene* s);
 
         // Draw the scenes
         void draw(SDL_Renderer* ren);
+
+        // Get state count
+        int getStateCount();
     };
 };
 

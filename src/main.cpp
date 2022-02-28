@@ -1,5 +1,4 @@
 #include "engine.hpp"
-#include <cstdio>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -17,16 +16,33 @@ int main(int argc, char* argv[])
 	SDL_Renderer* ren = win -> getRenderer();
 	win -> renameWindow("Five Nights at Freddy's");
 	
-	// Create the scene manager with a new scene
+	// Create the scene manager with the base scene
 	Game::SceneManager man;
 	man.push(new Game::Scenes::SceneWarning());
 
-	// Do a test draw
-	man.draw(ren);
+	// Events polling
+	SDL_Event e;
 
-	// Update 
-	SDL_RenderPresent(ren);
-	SDL_Delay(4000);
+	// While not fully exited
+	while(man.getStateCount() >= 1)
+	{
+		// Handle queue events
+		while(SDL_PollEvent(&e))
+		{
+			// Quit event has been sent
+			if(e.type == SDL_QUIT)
+			{
+				// Clear all states from memory so the game can stop
+				man.clear();
+			}
+		}
+
+		// Do a test draw
+		man.draw(ren);
+
+		// Update 
+		SDL_RenderPresent(ren);
+	}
 
 	// Exit the process
 	Core::exit_process(0);

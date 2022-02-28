@@ -16,4 +16,15 @@ namespace Engine::Game
             x -> draw(ren);
         }
     }
+
+    void SceneManager::clear()
+    {
+        while(getStateCount() != 0)
+            sceneQueue.pop_front();
+    }
+
+    int SceneManager::getStateCount()
+    {
+        return sceneQueue.size();
+    }
 };

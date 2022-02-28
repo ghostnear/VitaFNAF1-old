@@ -11,6 +11,7 @@ namespace Engine::Game::Scenes
     {
         double textAlpha, textAlphaSpeed, waitTimer;
         Assets::ImageAsset* textImage;
+        SDL_Rect textRect;
 
         void goToMenu();
 

@@ -7,14 +7,18 @@ namespace Engine::Game::Scenes
         // Save the renderer refference for later use
         ren = renderer;
 
-        // Load assets specific to this scene
-        textImage = man -> loadImage("assets/text/WARNING.png", "text_warning", ren);
-        textImage -> setColorKey(0x5A, 0x5A, 0x5A, ren);
-
         // Text alpha
         textAlpha = 0;
         textAlphaSpeed = 1.0 / 0.5;
         waitTimer = 1.5;
+
+        // Text rectangle
+        textRect = {
+            SCREEN_WIDTH  * 1 / 4, 
+            SCREEN_HEIGHT * 3 / 8, 
+            SCREEN_WIDTH  * 1 / 2, 
+            SCREEN_HEIGHT / 4 
+        };
     }
 
     void SceneWarning::goToMenu()
@@ -32,7 +36,6 @@ namespace Engine::Game::Scenes
         {
             textAlpha += dt * textAlphaSpeed;
             if(textAlpha > 1) textAlpha = 1;
-            SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha);
         }
         // Wait a bit
         else if(textAlpha == 1 && waitTimer > 0)
@@ -40,7 +43,8 @@ namespace Engine::Game::Scenes
             waitTimer -= dt;
         }
         // Fade out
-        else {
+        else
+        {
             textAlpha -= dt * textAlphaSpeed;
             if(textAlpha < 0)
             {
@@ -49,29 +53,24 @@ namespace Engine::Game::Scenes
                 // Switch to the menu scene
                 goToMenu();
             }
-            SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha);  
+             
         }
 
+        // Update text alpha
+        SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha); 
     }
 
     void SceneWarning::draw()
     {
         // Get the text image pointer
         // (don't force the conversion in real scenarios, it is going to fail if assets are not present)
-        Assets::ImageAsset* textImage = (Assets::ImageAsset*) man -> getAsset("text_warning");
+        textImage = (Assets::ImageAsset*) man -> getAsset("text_warning");
 
         // Check if the pointer exists so no crashes occur
         if(textImage != NULL)
         {
-            // Do the drawing with a test rectangle
-            SDL_Rect testRect = {
-                SCREEN_WIDTH  * 1 / 4, 
-                SCREEN_HEIGHT * 3 / 8, 
-                SCREEN_WIDTH  * 1 / 2, 
-                SCREEN_HEIGHT / 4 
-            };
-
-            SDL_RenderCopy(ren, textImage -> getTexture(), NULL, &testRect);
+            // Do the text drawing
+            SDL_RenderCopy(ren, textImage -> getTexture(), NULL, &textRect);
         }
     }
 };

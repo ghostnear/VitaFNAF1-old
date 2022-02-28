@@ -17,6 +17,7 @@ namespace Engine::Game
     public:
         SceneManager* parent;
         SDL_Renderer* ren;
+        void changeManager(AssetManager* newman){ delete man; man = newman; }
         virtual void update(double dt) = 0;
         virtual void onLoad(SDL_Renderer* ren) = 0;
         virtual void draw() = 0;

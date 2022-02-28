@@ -87,6 +87,7 @@ function (VITA_AFTER)
     FILE sce_sys/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
     FILE sce_sys/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
     FILE assets/text/WARNING.png assets/text/WARNING.png
+    FILE assets/gui/loader.png assets/gui/loader.png
   )
 endfunction()
 

@@ -16,7 +16,7 @@ namespace Engine::Game::Scenes
     void SceneMenu::draw()
     {
         // See that we moved scenes
-        SDL_SetRenderDrawColor(ren, 0xFF, 0xFF, 0xFF, 0xFF);
+        SDL_SetRenderDrawColor(ren, 0x55, 0x55, 0x55, 0xFF);
         SDL_RenderClear(ren);
     }
 };

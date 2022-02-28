@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 	
 	// Create the scene manager with the base scene
 	Game::SceneManager man;
-	man.push(new Game::Scenes::SceneWarning(), ren);
+	man.push(new Game::Scenes::SceneLoading(), ren);
 
 	// Event polling and delta timing
 	SDL_Event e;

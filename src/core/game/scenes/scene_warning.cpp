@@ -2,16 +2,27 @@
 
 namespace Engine::Game::Scenes
 {
-    void SceneWarning::onLoad(SDL_Renderer* ren)
+    void SceneWarning::onLoad(SDL_Renderer* renderer)
     {
+        // Save the renderer refference for later use
+        ren = renderer;
+
         // Load assets specific to this scene
         textImage = man -> loadImage("assets/text/WARNING.png", "text_warning", ren);
         textImage -> setColorKey(0x5A, 0x5A, 0x5A, ren);
 
         // Text alpha
         textAlpha = 0;
-        textAlphaSpeed = 1.0 / 0.75;
+        textAlphaSpeed = 1.0 / 0.5;
         waitTimer = 1.5;
+    }
+
+    void SceneWarning::goToMenu()
+    {
+        // Create menu scene in memory and remove this one
+        SceneMenu* newScene = new SceneMenu();
+        parent -> push(newScene, ren);
+        parent -> pop();
     }
 
     void SceneWarning::update(double dt)
@@ -35,15 +46,15 @@ namespace Engine::Game::Scenes
             {
                 textAlpha = 0;
 
-                // Switch to menu scene
-                // TODO
+                // Switch to the menu scene
+                goToMenu();
             }
             SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha);  
         }
 
     }
 
-    void SceneWarning::draw(SDL_Renderer* ren)
+    void SceneWarning::draw()
     {
         // Get the text image pointer
         // (don't force the conversion in real scenarios, it is going to fail if assets are not present)

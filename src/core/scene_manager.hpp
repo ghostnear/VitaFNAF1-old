@@ -14,6 +14,9 @@ namespace Engine::Game
         // Clear the scene queue
         void clear();
 
+        // Pop the front scene
+        void pop();
+
         // Push the scene to the back of the queue
         void push(Scene* s, SDL_Renderer* ren);
 
@@ -21,7 +24,7 @@ namespace Engine::Game
         void update(double dt);
 
         // Draw the scenes
-        void draw(SDL_Renderer* ren);
+        void draw();
 
         // Get state count
         int getStateCount();

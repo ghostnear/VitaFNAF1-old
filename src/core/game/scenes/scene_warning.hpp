@@ -3,6 +3,7 @@
 
 #include "../../types/scene.hpp"
 #include "../../scene_manager.hpp"
+#include "scene_menu.hpp"
 
 namespace Engine::Game::Scenes
 {
@@ -11,10 +12,12 @@ namespace Engine::Game::Scenes
         double textAlpha, textAlphaSpeed, waitTimer;
         Assets::ImageAsset* textImage;
 
+        void goToMenu();
+
     public:
         void update(double dt);
         void onLoad(SDL_Renderer* ren);
-        void draw(SDL_Renderer* ren);
+        void draw();
     };
 };
 

@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 		// Clear, draw and update
 		SDL_SetRenderDrawColor(ren, 0, 0, 0, 0);
 		SDL_RenderClear(ren);
-		man.draw(ren);
+		man.draw();
 		SDL_RenderPresent(ren);
 
 		// Update the timing and delay

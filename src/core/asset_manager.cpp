@@ -2,10 +2,12 @@
 
 namespace Engine::Game
 {
-    void AssetManager::loadImage(std::string path, std::string name, SDL_Renderer* renderer)
+    Assets::ImageAsset* AssetManager::loadImage(std::string path, std::string name, SDL_Renderer* renderer)
     {
         // Save the newly created asset here
-        assets[name] = new Assets::ImageAsset(path, renderer);
+        Assets::ImageAsset* asset = new Assets::ImageAsset(path, renderer);
+        assets[name] = asset;
+        return asset;
     }
 
     Asset* AssetManager::getAsset(std::string name)

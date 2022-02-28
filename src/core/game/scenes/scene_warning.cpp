@@ -5,8 +5,42 @@ namespace Engine::Game::Scenes
     void SceneWarning::onLoad(SDL_Renderer* ren)
     {
         // Load assets specific to this scene
-        man -> loadImage("assets/text/WARNING.png", "text_warning", ren);
-        ((Assets::ImageAsset*) man -> getAsset("text_warning")) -> setColorKey(0x5A, 0x5A, 0x5A, ren);
+        textImage = man -> loadImage("assets/text/WARNING.png", "text_warning", ren);
+        textImage -> setColorKey(0x5A, 0x5A, 0x5A, ren);
+
+        // Text alpha
+        textAlpha = 0;
+        textAlphaSpeed = 1.0 / 0.75;
+        waitTimer = 1.5;
+    }
+
+    void SceneWarning::update(double dt)
+    {
+        // Fade in
+        if(textAlpha < 1 && waitTimer == 1.5)
+        {
+            textAlpha += dt * textAlphaSpeed;
+            if(textAlpha > 1) textAlpha = 1;
+            SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha);
+        }
+        // Wait a bit
+        else if(textAlpha == 1 && waitTimer > 0)
+        {
+            waitTimer -= dt;
+        }
+        // Fade out
+        else {
+            textAlpha -= dt * textAlphaSpeed;
+            if(textAlpha < 0)
+            {
+                textAlpha = 0;
+
+                // Switch to menu scene
+                // TODO
+            }
+            SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha);  
+        }
+
     }
 
     void SceneWarning::draw(SDL_Renderer* ren)

@@ -17,6 +17,9 @@ namespace Engine::Game
         // Push the scene to the back of the queue
         void push(Scene* s, SDL_Renderer* ren);
 
+        // Update the scenes
+        void update(double dt);
+
         // Draw the scenes
         void draw(SDL_Renderer* ren);
 

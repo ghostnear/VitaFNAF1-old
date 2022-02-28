@@ -13,8 +13,8 @@ namespace Engine::Game
         std::map<std::string, Asset*> assets;
 
     public:
-        // Loaders for specific things
-        void loadImage(std::string path, std::string name, SDL_Renderer* renderer);
+        // Loaders for specific things that return their adresses
+        Assets::ImageAsset* loadImage(std::string path, std::string name, SDL_Renderer* renderer);
 
         // Gets an asset
         Asset* getAsset(std::string name);

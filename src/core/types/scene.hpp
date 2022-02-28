@@ -12,6 +12,7 @@ namespace Engine::Game
         AssetManager* man = new AssetManager();
 
     public:
+        virtual void update(double dt) = 0;
         virtual void onLoad(SDL_Renderer* ren) = 0;
         virtual void draw(SDL_Renderer* ren) = 0;
     };

@@ -22,8 +22,9 @@ int main(int argc, char* argv[])
 	Game::SceneManager man;
 	man.push(new Game::Scenes::SceneWarning(), ren);
 
-	// Events polling
+	// Event polling and delta timing
 	SDL_Event e;
+	Core::DeltaTimer dt;
 
 	// While not fully exited
 	while(man.getStateCount() >= 1)
@@ -39,11 +40,18 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		// Do the draw event and update the screen
+		// Update the state
+		man.update(dt.getDelta());
+
+		// Clear, draw and update
+		SDL_SetRenderDrawColor(ren, 0, 0, 0, 0);
+		SDL_RenderClear(ren);
 		man.draw(ren);
 		SDL_RenderPresent(ren);
 
+		// Update the timing and delay
 		SDL_Delay(5);
+		dt.update();
 	}
 
 	// Exit the process

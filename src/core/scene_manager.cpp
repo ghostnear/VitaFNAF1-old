@@ -9,6 +9,13 @@ namespace Engine::Game
         s -> onLoad(ren);
     }
 
+    void SceneManager::update(double dt)
+    {
+        // Go trough all the scenes and update them
+        for(auto x : sceneQueue)
+            x -> update(dt);
+    }
+
     void SceneManager::draw(SDL_Renderer* ren)
     {
         // Go trough all the scenes and do the drawing for all of them

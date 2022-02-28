@@ -11,8 +11,8 @@ namespace Engine::Rendering
 {
     class SDLWindow
     {
-        SDL_Window *window;
-        SDL_Renderer *renderer;
+        SDL_Window* window;
+        SDL_Renderer* renderer;
 
     public:
         // Constructor
@@ -22,10 +22,10 @@ namespace Engine::Rendering
         ~SDLWindow();
 
         // Get window pointer
-        SDL_Window *getWindow();
+        SDL_Window* getWindow();
 
         // Get renderer pointer
-        SDL_Renderer *getRenderer();
+        SDL_Renderer* getRenderer();
     };
 };
 

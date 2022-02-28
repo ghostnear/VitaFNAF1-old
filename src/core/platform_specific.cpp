@@ -2,7 +2,7 @@
 
 namespace Engine::Core
 {
-    void exit_process(int32_t value)
+    void exit_process(int value)
     {
 	#ifdef ENV_VITA
 		sceKernelExitProcess(value);

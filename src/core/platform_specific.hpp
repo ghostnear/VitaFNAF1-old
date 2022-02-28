@@ -12,7 +12,7 @@
 namespace Engine::Core
 {
     // Close the app
-    void exit_process(int32_t value);
+    void exit_process(int value);
 };
 
 #endif

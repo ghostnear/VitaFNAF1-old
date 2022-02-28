@@ -18,7 +18,11 @@ function (PROJECT_FILES)
   add_executable(${PROJECT_NAME}
     src/main.cpp
     src/core/delta_timer.cpp
+    src/core/types/image.cpp
+    src/core/asset_manager.cpp
+    src/core/scene_manager.cpp
     src/core/platform_specific.cpp
+    src/core/game/scenes/scene_warning.cpp
     src/rendering/sdl_window.cpp
   )
 endfunction()
@@ -83,6 +87,7 @@ function (VITA_AFTER)
     FILE sce_sys/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
     FILE sce_sys/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
     FILE sce_sys/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
+    FILE assets/text/WARNING.png assets/text/WARNING.png
   )
 endfunction()
 
@@ -101,7 +106,10 @@ function (UNIX_LIBS)
 endfunction()
 
 function (UNIX_AFTER)
-
+  # Copy the assets to the bin path
+  add_custom_command(TARGET VitaFNAF1 PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets/ $<TARGET_FILE_DIR:VitaFNAF1>/bin/assets/)
 endfunction()
 
 ## Building mode check

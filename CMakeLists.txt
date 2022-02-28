@@ -51,6 +51,7 @@ function (VITA_LIBS)
     stdc++
     pthread
     SDL2
+    SDL2_image
     SceDisplay_stub
     SceCtrl_stub
     SceAudio_stub
@@ -102,6 +103,7 @@ function (UNIX_LIBS)
     stdc++
     pthread
     SDL2
+    SDL2_image
   )
 endfunction()
 

@@ -9,9 +9,10 @@ namespace Engine::Game
     class Scene
     {
     protected:
-        AssetManager* man;
+        AssetManager* man = new AssetManager();
 
     public:
+        virtual void onLoad(SDL_Renderer* ren) = 0;
         virtual void draw(SDL_Renderer* ren) = 0;
     };
 };

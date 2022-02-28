@@ -9,7 +9,9 @@ int main(int argc, char* argv[])
 {
 	// Init SDL stuff
 	if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
-		return -1;
+		Core::exit_process(-1);
+	if(IMG_Init(IMG_INIT_PNG) < 0)
+		Core::exit_process(-1);
 
 	// Create the window and get the renderer pointer
 	Rendering::SDLWindow* win = new Rendering::SDLWindow();
@@ -18,7 +20,7 @@ int main(int argc, char* argv[])
 	
 	// Create the scene manager with the base scene
 	Game::SceneManager man;
-	man.push(new Game::Scenes::SceneWarning());
+	man.push(new Game::Scenes::SceneWarning(), ren);
 
 	// Events polling
 	SDL_Event e;
@@ -37,11 +39,11 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		// Do a test draw
+		// Do the draw event and update the screen
 		man.draw(ren);
-
-		// Update 
 		SDL_RenderPresent(ren);
+
+		SDL_Delay(5);
 	}
 
 	// Exit the process

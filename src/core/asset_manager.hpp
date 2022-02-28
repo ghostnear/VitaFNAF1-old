@@ -14,7 +14,7 @@ namespace Engine::Game
 
     public:
         // Loaders for specific things
-        void loadImage(std::string path, std::string name);
+        void loadImage(std::string path, std::string name, SDL_Renderer* renderer);
 
         // Gets an asset
         Asset* getAsset(std::string name);

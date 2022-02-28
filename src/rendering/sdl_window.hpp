@@ -2,6 +2,7 @@
 #define RENDERING_WINDOW_HPP
 
 #include <SDL2/SDL.h>
+#include <string>
 #include "../core/core.hpp"
 
 #define SCREEN_WIDTH 960
@@ -23,6 +24,9 @@ namespace Engine::Rendering
 
         // Get window pointer
         SDL_Window* getWindow();
+
+        // Rename the window
+        void renameWindow(std::string newName);
 
         // Get renderer pointer
         SDL_Renderer* getRenderer();

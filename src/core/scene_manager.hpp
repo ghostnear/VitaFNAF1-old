@@ -1,17 +1,21 @@
 #ifndef CORE_SCENEMANAGER_HPP
 #define CORE_SCENEMANAGER_HPP
 
-#include <queue>
+#include <deque>
+#include "../rendering/rendering.hpp"
 
 namespace Engine::Game
 {
     class SceneManager
     {
-        std::queue<Scene*> sceneQueue;
+        std::deque<Scene*> sceneQueue;
 
     public:
         // Push the scene to the back of the queue
         void push(Scene* s);
+
+        // Draw the scenes
+        void draw(SDL_Renderer* ren);
     };
 };
 

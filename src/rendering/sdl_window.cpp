@@ -40,6 +40,12 @@ namespace Engine::Rendering
         return window;
     }
 
+    void SDLWindow::renameWindow(std::string newName)
+    {
+        // Rename the window using the C string
+        SDL_SetWindowTitle(window, newName.c_str());
+    }
+
     SDL_Renderer *SDLWindow::getRenderer()
     {
         // Returns the renderer pointer

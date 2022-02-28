@@ -15,15 +15,9 @@ function (PROJECT_FILES)
 
   ## Build and link
   # Add all the files needed to compile here
+  FILE(GLOB_RECURSE PROJ_SOURCES src/*cpp)
   add_executable(${PROJECT_NAME}
-    src/main.cpp
-    src/core/delta_timer.cpp
-    src/core/types/image.cpp
-    src/core/asset_manager.cpp
-    src/core/scene_manager.cpp
-    src/core/platform_specific.cpp
-    src/core/game/scenes/scene_warning.cpp
-    src/rendering/sdl_window.cpp
+    ${PROJ_SOURCES}
   )
 endfunction()
 
@@ -49,9 +43,13 @@ function (VITA_LIBS)
   # Libraries to link to (drop the -l prefix). This will mostly be stubs.
   target_link_libraries(${PROJECT_NAME}
     stdc++
-    pthread
-    SDL2
     SDL2_image
+    SDL2
+    png
+    jpeg
+    webp
+    z
+    pthread
     SceDisplay_stub
     SceCtrl_stub
     SceAudio_stub

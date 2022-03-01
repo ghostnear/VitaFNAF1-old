@@ -10,8 +10,9 @@ namespace Engine::Game::Scenes
 {
     class SceneLoading : public Engine::Game::Scene
     {
-        std::queue<std::pair<std::string, std::string>> imagesToLoad;
+        std::queue<std::pair<std::string, std::string>> imagesToLoad, audioToLoad;
         Assets::ImageAsset* currentImagePointer;
+        Assets::AudioAsset* currentAudioPointer;
         Sprite loadingSprite;
         SDL_Rect loadRect;
 

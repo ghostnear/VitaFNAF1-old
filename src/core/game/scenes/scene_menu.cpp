@@ -30,6 +30,10 @@ namespace Engine::Game::Scenes
         staticSprite.setSprite((Assets::ImageAsset*) man -> getAsset("static_1"), "static_1");
         backgroundSprite.setAlpha(rand() % 255);
         backgroundSprite.setSprite((Assets::ImageAsset*) man -> getAsset("menu_bg_1"), "menu_bg_1");
+
+        // Start the music
+        ((Assets::AudioAsset*)(man -> getAsset("menu_static"))) -> play();
+        ((Assets::AudioAsset*)(man -> getAsset("menu_loop"))) -> setLoops(-1);
     }
 
     void SceneMenu::update(double dt)

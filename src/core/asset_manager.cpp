@@ -10,6 +10,15 @@ namespace Engine::Game
         return asset;
     }
 
+    Assets::AudioAsset* AssetManager::loadMP3(std::string path, std::string name)
+    {
+        // Save the newly created asset here
+        Assets::AudioAsset* asset = new Assets::AudioAsset();
+        asset -> loadMP3(path);
+        assets[name] = asset;
+        return asset;
+    }
+
     Asset* AssetManager::getAsset(std::string name)
     {
         // Return the required asset pointer

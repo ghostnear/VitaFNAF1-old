@@ -43,8 +43,16 @@ function (VITA_LIBS)
   # Libraries to link to (drop the -l prefix). This will mostly be stubs.
   target_link_libraries(${PROJECT_NAME}
     stdc++
+    SDL2_mixer
     SDL2_image
     SDL2
+    mikmod
+    mpg123
+    FLAC
+    vorbisfile
+    vorbis
+    ogg
+    m
     png
     jpeg
     webp
@@ -101,6 +109,8 @@ function (VITA_AFTER)
     FILE assets/gui/static/8.png assets/gui/static/8.png
     FILE assets/text/WARNING.png assets/text/WARNING.png
     FILE assets/text/GAME_TITLE.png assets/text/GAME_TITLE.png
+    FILE assets/audio/static2.wav assets/audio/static2.wav
+    FILE assets/audio/darkness_music.wav assets/audio/darkness_music.wav
   )
 endfunction()
 
@@ -114,8 +124,9 @@ function (UNIX_LIBS)
   target_link_libraries(${PROJECT_NAME}
     stdc++
     pthread
-    SDL2
+    SDL2_mixer
     SDL2_image
+    SDL2
   )
 endfunction()
 

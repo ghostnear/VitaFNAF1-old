@@ -24,6 +24,9 @@ namespace Engine::Game::Scenes
         imagesToLoad.push(std::make_pair("assets/gui/static/6.png", "static_6"));
         imagesToLoad.push(std::make_pair("assets/gui/static/7.png", "static_7"));
         imagesToLoad.push(std::make_pair("assets/gui/static/8.png", "static_8"));
+
+        audioToLoad.push(std::make_pair("assets/audio/static2.wav", "menu_static"));
+        audioToLoad.push(std::make_pair("assets/audio/darkness_music.wav", "menu_loop"));
         
         // Loader rectangle
         loadRect = {
@@ -60,12 +63,21 @@ namespace Engine::Game::Scenes
             auto x = imagesToLoad.front();
             imagesToLoad.pop();
 
-            // Load assets specific to this scene
+            // Load the asset
             currentImagePointer = man -> loadImage(x.first, x.second, ren);
 
             // Only images that need to be color key'd (TODO: find a better way to do this)
             if(x.second == "gui_loader" || x.second.substr(0, 5) == "text_")
                 currentImagePointer -> setColorKey(0x5A, 0x5A, 0x5A, ren);
+        }
+        // Check for MP3s
+        else if(!audioToLoad.empty())
+        {
+            auto x = audioToLoad.front();
+            audioToLoad.pop();
+
+            // Load the asset
+            currentAudioPointer = man -> loadMP3(x.first, x.second);
         }
         else
         {

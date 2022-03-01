@@ -1,6 +1,7 @@
 #include "engine.hpp"
 #include <cstdlib>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
 
 using namespace Engine;
@@ -12,6 +13,8 @@ int main(int argc, char* argv[])
 	if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		Core::exit_process(-1);
 	if(IMG_Init(IMG_INIT_PNG) < 0)
+		Core::exit_process(-1);
+	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 		Core::exit_process(-1);
 
 	// Initialise RNG
@@ -57,6 +60,11 @@ int main(int argc, char* argv[])
 		SDL_Delay(5);
 		dt.update();
 	}
+
+	// Quit SDL stuff
+	Mix_Quit();
+	IMG_Quit();
+	SDL_Quit();
 
 	// Exit the process
 	Core::exit_process(0);

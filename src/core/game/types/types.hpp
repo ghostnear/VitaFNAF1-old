@@ -4,5 +4,6 @@
 #include "scene.hpp"
 #include "asset.hpp"
 #include "image.hpp"
+#include "audio.hpp"
 
 #endif

@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include "game/types/image.hpp"
+#include "game/types/audio.hpp"
 
 namespace Engine::Game
 {
@@ -15,6 +16,7 @@ namespace Engine::Game
     public:
         // Loaders for specific things that return their adresses
         Assets::ImageAsset* loadImage(std::string path, std::string name, SDL_Renderer* renderer);
+        Assets::AudioAsset* loadMP3(std::string path, std::string name);
 
         // Gets an asset
         Asset* getAsset(std::string name);

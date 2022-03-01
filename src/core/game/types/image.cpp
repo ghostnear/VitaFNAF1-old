@@ -6,6 +6,9 @@ namespace Engine::Game::Assets
     {
         imageSurface = IMG_Load(path.c_str());
         imageTexture = SDL_CreateTextureFromSurface(renderer, imageSurface);
+
+        // ! Compressed PNGs don't work without this !
+        SDL_SetTextureBlendMode(imageTexture, SDL_BLENDMODE_BLEND);
     }
 
     SDL_Surface* ImageAsset::getSurface()

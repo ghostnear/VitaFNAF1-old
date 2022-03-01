@@ -14,8 +14,7 @@ namespace Engine::Game
             sprite = newSprite;
             spriteName = newSpriteName;
 
-            setAlpha(alpha + 1);
-            setAlpha(alpha - 1);
+            SDL_SetTextureAlphaMod(sprite -> getTexture(), alpha);
         }
     }
 

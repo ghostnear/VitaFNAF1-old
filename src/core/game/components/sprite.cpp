@@ -13,6 +13,9 @@ namespace Engine::Game
         {
             sprite = newSprite;
             spriteName = newSpriteName;
+
+            setAlpha(alpha + 1);
+            setAlpha(alpha - 1);
         }
     }
 
@@ -26,6 +29,11 @@ namespace Engine::Game
         if(alpha != newAlpha && sprite != NULL)
             SDL_SetTextureAlphaMod(sprite -> getTexture(), newAlpha); 
         alpha = newAlpha;
+    }
+
+    int Sprite::getAlpha()
+    {
+        return alpha;
     }
 
     void Sprite::draw(SDL_Renderer* ren)

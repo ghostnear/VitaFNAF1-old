@@ -9,13 +9,21 @@ namespace Engine::Game::Scenes
 
         // Manually push back the assets to load
         // TODO: better way to do this
+        imagesToLoad.push(std::make_pair("assets/gui/loader.png", "gui_loader"));
+        imagesToLoad.push(std::make_pair("assets/text/WARNING.png", "text_warning"));
         imagesToLoad.push(std::make_pair("assets/menu/1.png", "menu_bg_1"));
         imagesToLoad.push(std::make_pair("assets/menu/2.png", "menu_bg_2"));
         imagesToLoad.push(std::make_pair("assets/menu/3.png", "menu_bg_3"));
         imagesToLoad.push(std::make_pair("assets/menu/4.png", "menu_bg_4"));
-        imagesToLoad.push(std::make_pair("assets/gui/loader.png", "gui_loader"));
-        imagesToLoad.push(std::make_pair("assets/text/WARNING.png", "text_warning"));
-
+        imagesToLoad.push(std::make_pair("assets/gui/static/1.png", "static_1"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/2.png", "static_2"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/3.png", "static_3"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/4.png", "static_4"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/5.png", "static_5"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/6.png", "static_6"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/7.png", "static_7"));
+        imagesToLoad.push(std::make_pair("assets/gui/static/8.png", "static_8"));
+        
         // Loader rectangle
         loadRect = {
             SCREEN_WIDTH  * 4 / 5, 
@@ -47,7 +55,10 @@ namespace Engine::Game::Scenes
 
             // Load assets specific to this scene
             currentImagePointer = man -> loadImage(x.first, x.second, ren);
-            currentImagePointer -> setColorKey(0x5A, 0x5A, 0x5A, ren);
+
+            // Only images that need to be color key'd (TODO: find a better way to do this)
+            if(x.second == "gui_loader" || x.second == "text_warning")
+                currentImagePointer -> setColorKey(0x5A, 0x5A, 0x5A, ren);
         }
         else
         {

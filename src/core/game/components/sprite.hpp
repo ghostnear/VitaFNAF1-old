@@ -23,6 +23,9 @@ namespace Engine::Game
         // Sets sprite alpha
         void setAlpha(int newAlpha);
 
+        // Gets sprite alpha
+        int getAlpha();
+
         // Draws the sprite
         void draw(SDL_Renderer* ren);
 

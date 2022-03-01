@@ -14,7 +14,8 @@ namespace Engine::Game::Scenes
         double bgTimer, staticTimer;
         double timer60HZ;
         int staticIndex = 1;
-        Sprite backgroundSprite, staticSprite;
+        SDL_Rect fnafTextRect;
+        Sprite backgroundSprite, staticSprite, fnafText;
 
     public:
         void update(double dt);

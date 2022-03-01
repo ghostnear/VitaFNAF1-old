@@ -15,7 +15,17 @@ namespace Engine::Game::Scenes
         // Do another random generator reset just to be sure
         srand(time(NULL));
 
+        // Set default coords
+        fnafTextRect = {
+            SCREEN_WIDTH  * 110 / 960, 
+            SCREEN_HEIGHT * 50 / 540, 
+            SCREEN_WIDTH  * 180 / 960, 
+            SCREEN_HEIGHT  * 180 / 540
+        };
+
         // Set default sprites
+        fnafText.updateRect(&fnafTextRect);
+        fnafText.setSprite((Assets::ImageAsset*) man -> getAsset("text_game_title"));
         staticSprite.setAlpha(50 + rand() % 100);
         staticSprite.setSprite((Assets::ImageAsset*) man -> getAsset("static_1"), "static_1");
         backgroundSprite.setAlpha(rand() % 255);
@@ -24,6 +34,12 @@ namespace Engine::Game::Scenes
 
     void SceneMenu::update(double dt)
     {
+        // TODO: do this better
+        fnafTextRect.x = parent -> getWindow() -> getSize().first * 110 / 960;
+        fnafTextRect.y = parent -> getWindow() -> getSize().second * 50 / 540;
+        fnafTextRect.w = parent -> getWindow() -> getSize().first * 180 / 960;
+        fnafTextRect.h = parent -> getWindow() -> getSize().second * 180 / 540;
+
         // Update timers
         bgTimer += dt;
         staticTimer += dt;
@@ -72,5 +88,8 @@ namespace Engine::Game::Scenes
 
         // Draw the static over it
         staticSprite.draw(ren);
+
+        // Draw the title
+        fnafText.draw(ren);
     }
 };

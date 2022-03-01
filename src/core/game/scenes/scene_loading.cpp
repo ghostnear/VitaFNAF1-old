@@ -11,6 +11,7 @@ namespace Engine::Game::Scenes
         // TODO: better way to do this
         imagesToLoad.push(std::make_pair("assets/gui/loader.png", "gui_loader"));
         imagesToLoad.push(std::make_pair("assets/text/WARNING.png", "text_warning"));
+        imagesToLoad.push(std::make_pair("assets/text/GAME_TITLE.png", "text_game_title"));
         imagesToLoad.push(std::make_pair("assets/menu/1.png", "menu_bg_1"));
         imagesToLoad.push(std::make_pair("assets/menu/2.png", "menu_bg_2"));
         imagesToLoad.push(std::make_pair("assets/menu/3.png", "menu_bg_3"));
@@ -63,7 +64,7 @@ namespace Engine::Game::Scenes
             currentImagePointer = man -> loadImage(x.first, x.second, ren);
 
             // Only images that need to be color key'd (TODO: find a better way to do this)
-            if(x.second == "gui_loader" || x.second == "text_warning")
+            if(x.second == "gui_loader" || x.second.substr(0, 5) == "text_")
                 currentImagePointer -> setColorKey(0x5A, 0x5A, 0x5A, ren);
         }
         else

@@ -2,15 +2,24 @@
 #define CORE_SCENEMANAGER_HPP
 
 #include <deque>
-#include "../rendering/rendering.hpp"
+#include "../rendering/sdl_window.hpp"
 
 namespace Engine::Game
 {
+    class SDLWindow;
+
     class SceneManager
     {
+        SDLWindow* win;
         std::deque<Scene*> sceneQueue;
 
     public:
+        // Constructor
+        SceneManager(SDLWindow* assWin);
+
+        // Gets the window
+        SDLWindow* getWindow();
+
         // Clear the scene queue
         void clear();
 

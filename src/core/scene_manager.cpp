@@ -2,6 +2,16 @@
 
 namespace Engine::Game
 {
+    SceneManager::SceneManager(SDLWindow* assWin)
+    {
+        win = assWin;
+    }
+
+    SDLWindow* SceneManager::getWindow()
+    {
+        return win;
+    }
+
     void SceneManager::push(Scene* s, SDL_Renderer* ren)
     {
         // Push the scene

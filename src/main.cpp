@@ -18,12 +18,12 @@ int main(int argc, char* argv[])
 	srand(time(NULL));
 
 	// Create the window and get the renderer pointer
-	Rendering::SDLWindow* win = new Rendering::SDLWindow();
+	Game::SDLWindow* win = new Game::SDLWindow();
 	SDL_Renderer* ren = win -> getRenderer();
 	win -> renameWindow("Five Nights at Freddy's");
 	
 	// Create the scene manager with the base scene
-	Game::SceneManager man;
+	Game::SceneManager man(win);
 	man.push(new Game::Scenes::SceneLoading(), ren);
 
 	// Event polling and delta timing

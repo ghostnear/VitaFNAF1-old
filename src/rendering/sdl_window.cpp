@@ -1,6 +1,6 @@
 #include "sdl_window.hpp"
 
-namespace Engine::Rendering
+namespace Engine::Game
 {
     SDLWindow::SDLWindow()
     {
@@ -24,6 +24,13 @@ namespace Engine::Rendering
             Core::exit_process(-1);
         }
     };
+
+    std::pair<int, int> SDLWindow::getSize()
+    {
+        int x, y;
+        SDL_GetWindowSize(window, &x, &y);
+        return std::make_pair(x, y);
+    }
 
     SDLWindow::~SDLWindow()
     {

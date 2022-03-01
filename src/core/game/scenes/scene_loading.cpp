@@ -45,6 +45,12 @@ namespace Engine::Game::Scenes
 
     void SceneLoading::update(double dt)
     {
+        // TODO: make this better
+        loadRect.x = parent -> getWindow() -> getSize().first  * 4 / 5;
+        loadRect.y = parent -> getWindow() -> getSize().second - 3 * (parent -> getWindow() -> getSize().first * 1.0 / 10) / 2;
+        loadRect.w = parent -> getWindow() -> getSize().first  * 1 / 10;
+        loadRect.h = parent -> getWindow() -> getSize().first  * 1 / 10;
+
         // TODO: this should be put on another thread
 
         // Check for images

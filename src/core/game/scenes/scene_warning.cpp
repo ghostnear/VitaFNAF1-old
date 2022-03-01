@@ -17,7 +17,7 @@ namespace Engine::Game::Scenes
             SCREEN_WIDTH  * 1 / 4, 
             SCREEN_HEIGHT * 3 / 8, 
             SCREEN_WIDTH  * 1 / 2, 
-            SCREEN_HEIGHT / 4 
+            SCREEN_HEIGHT * 1 / 4 
         };
         warningSprite.updateRect(&textRect);
 
@@ -36,6 +36,12 @@ namespace Engine::Game::Scenes
 
     void SceneWarning::update(double dt)
     {
+        // TODO: make this better
+        textRect.x = parent -> getWindow() -> getSize().first  * 1 / 4;
+        textRect.y = parent -> getWindow() -> getSize().second  * 3 / 8;
+        textRect.w = parent -> getWindow() -> getSize().first  * 1 / 2;
+        textRect.h = parent -> getWindow() -> getSize().second  * 1 / 4;
+
         // Fade in
         if(textAlpha < 1 && waitTimer == 1.5)
         {

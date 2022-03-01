@@ -8,7 +8,9 @@
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 540
 
-namespace Engine::Rendering
+#include <cstdlib>
+
+namespace Engine::Game
 {
     class SDLWindow
     {
@@ -21,6 +23,9 @@ namespace Engine::Rendering
 
         // Destructor
         ~SDLWindow();
+
+        // Get sizes
+        std::pair<int, int> getSize();
 
         // Get window pointer
         SDL_Window* getWindow();

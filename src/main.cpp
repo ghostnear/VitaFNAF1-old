@@ -1,4 +1,5 @@
 #include "engine.hpp"
+#include <cstdlib>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -12,6 +13,9 @@ int main(int argc, char* argv[])
 		Core::exit_process(-1);
 	if(IMG_Init(IMG_INIT_PNG) < 0)
 		Core::exit_process(-1);
+
+	// Initialise RNG
+	srand(time(NULL));
 
 	// Create the window and get the renderer pointer
 	Rendering::SDLWindow* win = new Rendering::SDLWindow();

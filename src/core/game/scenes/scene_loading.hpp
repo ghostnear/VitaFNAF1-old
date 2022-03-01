@@ -1,8 +1,9 @@
 #ifndef SCENES_LOADING_HPP
 #define SCENES_LOADING_HPP
 
-#include "../../types/scene.hpp"
+#include "../types/types.hpp"
 #include "../../scene_manager.hpp"
+#include "../components/components.hpp"
 #include <queue>
 
 namespace Engine::Game::Scenes
@@ -11,6 +12,7 @@ namespace Engine::Game::Scenes
     {
         std::queue<std::pair<std::string, std::string>> imagesToLoad;
         Assets::ImageAsset* currentImagePointer;
+        Sprite loadingSprite;
         SDL_Rect loadRect;
 
         void goToWarning();

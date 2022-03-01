@@ -9,7 +9,7 @@ namespace Engine::Game::Scenes
 
         // Text alpha
         textAlpha = 0;
-        textAlphaSpeed = 1.0 / 0.5;
+        textAlphaSpeed = 1.0 / 1.0;
         waitTimer = 1.5;
 
         // Text rectangle
@@ -19,6 +19,10 @@ namespace Engine::Game::Scenes
             SCREEN_WIDTH  * 1 / 2, 
             SCREEN_HEIGHT / 4 
         };
+        warningSprite.updateRect(&textRect);
+
+        // Sprite alpha set to 0
+        warningSprite.setAlpha(0);
     }
 
     void SceneWarning::goToMenu()
@@ -58,7 +62,7 @@ namespace Engine::Game::Scenes
         }
 
         // Update text alpha
-        SDL_SetTextureAlphaMod(textImage -> getTexture(), 255 * textAlpha); 
+        warningSprite.setAlpha(255 * textAlpha);
     }
 
     void SceneWarning::draw()
@@ -71,7 +75,8 @@ namespace Engine::Game::Scenes
         if(textImage != NULL)
         {
             // Do the text drawing
-            SDL_RenderCopy(ren, textImage -> getTexture(), NULL, &textRect);
+            warningSprite.setSprite(textImage);
+            warningSprite.draw(ren);
         }
     }
 };

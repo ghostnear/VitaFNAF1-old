@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include "types/image.hpp"
+#include "game/types/image.hpp"
 
 namespace Engine::Game
 {

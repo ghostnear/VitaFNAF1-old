@@ -1,8 +1,9 @@
 #ifndef SCENES_WARNING_HPP
 #define SCENES_WARNING_HPP
 
-#include "../../types/scene.hpp"
+#include "../types/types.hpp"
 #include "../../scene_manager.hpp"
+#include "../components/components.hpp"
 #include "scene_menu.hpp"
 
 namespace Engine::Game::Scenes
@@ -11,6 +12,7 @@ namespace Engine::Game::Scenes
     {
         double textAlpha, textAlphaSpeed, waitTimer;
         Assets::ImageAsset* textImage;
+        Sprite warningSprite;
         SDL_Rect textRect;
 
         void goToMenu();

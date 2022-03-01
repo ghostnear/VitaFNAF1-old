@@ -2,7 +2,7 @@
 #define CORE_SCENE_HPP
 
 #include <SDL2/SDL.h>
-#include "../asset_manager.hpp"
+#include "../../asset_manager.hpp"
 
 namespace Engine::Game
 {

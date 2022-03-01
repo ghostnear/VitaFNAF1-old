@@ -9,6 +9,10 @@ namespace Engine::Game::Scenes
 
         // Manually push back the assets to load
         // TODO: better way to do this
+        imagesToLoad.push(std::make_pair("assets/menu/1.png", "menu_bg_1"));
+        imagesToLoad.push(std::make_pair("assets/menu/2.png", "menu_bg_2"));
+        imagesToLoad.push(std::make_pair("assets/menu/3.png", "menu_bg_3"));
+        imagesToLoad.push(std::make_pair("assets/menu/4.png", "menu_bg_4"));
         imagesToLoad.push(std::make_pair("assets/gui/loader.png", "gui_loader"));
         imagesToLoad.push(std::make_pair("assets/text/WARNING.png", "text_warning"));
 
@@ -19,6 +23,7 @@ namespace Engine::Game::Scenes
             SCREEN_WIDTH  * 1 / 10, 
             SCREEN_WIDTH  * 1 / 10
         };
+        loadingSprite.updateRect(&loadRect);
     }
 
     void SceneLoading::goToWarning()
@@ -60,8 +65,11 @@ namespace Engine::Game::Scenes
         // Check if the pointer exists so no crashes occur
         if(currentImagePointer != NULL)
         {
+            // Update the warning sprite to have the correct pointer
+            loadingSprite.setSprite(currentImagePointer);
+
             // Do the text drawing
-            SDL_RenderCopy(ren, currentImagePointer -> getTexture(), NULL, &loadRect);
+            loadingSprite.draw(ren);
         }
     }
 };

@@ -14,6 +14,8 @@ int main(int argc, char* argv[])
 		Core::exit_process(-1);
 	if(IMG_Init(IMG_INIT_PNG) < 0)
 		Core::exit_process(-1);
+	if(Mix_Init(MIX_INIT_MP3) < 0)
+		Core::exit_process(-1);
 	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 		Core::exit_process(-1);
 

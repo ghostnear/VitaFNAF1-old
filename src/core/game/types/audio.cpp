@@ -14,9 +14,11 @@ namespace Engine::Game::Assets
         if(!isPlaying())
         {
             if(audio != NULL)
+            {
                 channelID = Mix_PlayChannel(-1, audio, loops);
-            else
-                printf("Audio wasn't loaded!\n");
+                if(channelID == -1)
+                    exit(-1);
+            }
         }
     }
 

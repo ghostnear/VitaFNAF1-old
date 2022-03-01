@@ -16,8 +16,9 @@ int main(int argc, char* argv[])
 		Core::exit_process(-1);
 	if(Mix_Init(MIX_INIT_MP3) < 0)
 		Core::exit_process(-1);
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	if(Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 1024) < 0)
 		Core::exit_process(-1);
+	Mix_AllocateChannels(50);
 
 	// Initialise RNG
 	srand(time(NULL));

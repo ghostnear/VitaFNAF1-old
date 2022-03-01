@@ -22,6 +22,11 @@ namespace Engine::Game::Assets
         }
     }
 
+    Mix_Chunk* AudioAsset::getAudioChunk()
+    {
+        return audio;
+    }
+
     void AudioAsset::stop()
     {
         if(isPlaying())

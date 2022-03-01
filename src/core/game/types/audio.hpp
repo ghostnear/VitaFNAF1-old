@@ -15,6 +15,9 @@ namespace Engine::Game::Assets
         // Load MP3s
         void loadMP3(std::string path);
 
+        // Get audio chunk
+        Mix_Chunk* getAudioChunk();
+
         // Sets the ammount of loops
         void setLoops(int loopcount);
 
